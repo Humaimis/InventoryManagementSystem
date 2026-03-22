@@ -1,34 +1,40 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-  <title>Add Category</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Categories - Smart Inventory Management System</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <header>
+    <img src="logo.png" alt="Smart Inventory Logo" width="80">
     <nav>
-        <a href="index.html">Home</a> |
-        <a href="about.html">About Us</a> |
-        <a href="contact.html">Contact Us</a> |
-        <a href="inventory.html">Inventory</a> |
-        <a href="products.html">Products</a> |
-        <a href="addproduct.html">Add Product</a> |
-        <a href="addcategory.html">Add Category</a> |
-        <a href="stock.html">Stock</a> |
-        <a href="reports.html">Reports</a>
-   </nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="inventory.html">Inventory</a>
+      <a href="products.html">Products</a>
+      <a href="addproduct.html">Add Product</a>
+      <a href="categories.html">Categories</a>
+      <a href="reports.html">Reports</a>
+    </nav>
+  </header>
 
-  <h1>Add New Category</h1>
-  <form action="https://example.com/addcategory" method="post">
-    <p><label for="cname">Category Name:</label>
-    <input type="text" id="cname" name="categoryname" /></p>
+  <h1>Categories</h1>
+  <form action="https://httpbin.org/get" method="get">
+    <label for="cname">Category Name:</label>
+    <input type="text" id="cname" name="categoryname" required><br><br>
 
-    <p><label for="description">Description:</label><br />
-    <textarea id="description" name="categorydescription" rows="4" cols="40"></textarea></p>
+    <label for="cdesc">Description:</label><br>
+    <textarea id="cdesc" name="description" rows="4" cols="40"></textarea><br><br>
 
-    <p><input type="submit" value="Add Category" />
-    <input type="reset" value="Clear Form" /></p>
+    <input type="submit" value="Add Category">
   </form>
 
-  <footer>© 2026 Humaimis Team</footer>
+  <footer>
+    <p>&copy; 2026 Smart Inventory Management System | Contact: info@inventory.com</p>
+  </footer>
+
 </body>
 </html>
