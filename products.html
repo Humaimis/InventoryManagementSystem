@@ -2,9 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>Add Product</title>
+    <title>Products</title>
     <link rel="stylesheet" href="styles.css" />
-
     <nav>
             <a href="index.html">Home</a> |
             <a href="about.html">About Us</a> |
@@ -19,29 +18,27 @@
 </head>
 
 <body>
-    <h2>Add Product</h2>
+    <h2>Products</h2>
 
-    <form action="https://httpbin.org/get" method="get">
-        <label>
-            Product Name:  
-            <input type="text" name="product" />
-        </label>
-        <br /><br />
+    <table border="1" cellspacing="5" cellpadding="5">
+        <tr>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+        </tr>
 
-        <label>
-            Category:  
-            <input type="text" name="category" />
-        </label>
-        <br /><br />
+        <tr>
+            <td>Rice</td>
+            <td>Grains</td>
+            <td>50</td>
+        </tr>
 
-        <label>
-            Quantity:  
-            <input type="number" name="quantity" />
-        </label>
-        <br /><br />
-
-        <input type="submit" value="Add Product" />
-    </form>
+        <tr>
+            <td>Oil</td>
+            <td>Cooking</td>
+            <td>25</td>
+        </tr>
+    </table>
 </body>
 
 </html>
