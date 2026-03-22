@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <title>Stock</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+    <title>Stock Management</title>
+    <link rel="stylesheet" href="styles.css" />
+
     <nav>
-    <a href="index.html">Home</a> |
-    <a href="about.html">About Us</a> |
-    <a href="contact.html">Contact Us</a> |
-    <a href="inventory.html">Inventory</a> |
-    <a href="products.html">Products</a> |
-    <a href="addproduct.html">Add Product</a> |
-    <a href="addcategory.html">Add Category</a> |
-    <a href="stock.html">Stock</a> |
-    <a href="reports.html">Reports</a>
-  </nav>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About Us</a> |
+            <a href="contact.html">Contact Us</a> |
+            <a href="inventory.html">Inventory</a> |
+            <a href="products.html">Products</a> |
+            <a href="addproduct.html">Add Product</a> |
+            <a href="addcategory.html">Add Category</a> |
+            <a href="stock.html">Stock</a> |
+            <a href="reports.html">Reports</a>
+        </nav>
+</head>
 
-  <h1>Stock Management</h1>
-  <table>
-    <tr><th colspan="2">Product Info</th><th>Stock</th></tr>
-    <tr><td>Phone</td><td>Electronics</td><td>25</td></tr>
-    <tr><td rowspan="2">Chair</td><td>Furniture</td><td>10</td></tr>
-    <tr><td>Office</td><td>5</td></tr>
-  </table>
+<body>
+    <h2>Stock Management</h2>
 
-  <footer>© 2026 Humaimis Team</footer>
+    <form action="https://httpbin.org/get" method="get">
+        <h3>Stock In</h3>
+        <label>
+            Product:  
+            <input type="text" name="stockin_product" />
+        </label>
+        <br /><br />
+
+        <label>
+            Quantity:  
+            <input type="number" name="stockin_quantity" />
+        </label>
+        <br /><br />
+
+        <input type="submit" value="Add Stock" />
+    </form>
+
+    <hr />
+
+    <form action="https://httpbin.org/get" method="get">
+        <h3>Stock Out</h3>
+        <label>
+            Product:  
+            <input type="text" name="stockout_product" />
+        </label>
+        <br /><br />
+
+        <label>
+            Quantity:  
+            <input type="number" name="stockout_quantity" />
+        </label>
+        <br /><br />
+
+        <input type="submit" value="Remove Stock" />
+    </form>
 </body>
+
 </html>
