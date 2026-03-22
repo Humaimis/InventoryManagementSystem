@@ -1,47 +1,94 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-    <title>Add Product</title>
-    <link rel="stylesheet" href="styles.css" />
-
-    <nav>
-            <a href="index.html">Home</a> |
-            <a href="about.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="inventory.html">Inventory</a> |
-            <a href="products.html">Products</a> |
-            <a href="addproduct.html">Add Product</a> |
-            <a href="addcategory.html">Add Category</a> |
-            <a href="stock.html">Stock</a> |
-            <a href="reports.html">Reports</a>
-        </nav>
+  <title>Add Product - Smart Inventory Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Internal CSS example */
+    form {
+      background-color: #f0f8ff;
+      padding: 15px;
+      border: 1px solid #ccc;
+      width: 60%;
+      margin: auto;
+    }
+    label {
+      display: inline-block;
+      width: 120px;
+      text-align: right;
+      margin-right: 10px;
+    }
+  </style>
 </head>
-
 <body>
-    <h2>Add Product</h2>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About Us</a> |
+    <a href="contact.html">Contact Us</a> |
+    <a href="inventory.html">Inventory</a> |
+    <a href="products.html">Products</a> |
+    <a href="addproduct.html">Add Product</a> |
+    <a href="addcategory.html">Add Category</a> |
+    <a href="stock.html">Stock</a> |
+    <a href="reports.html">Reports</a>
+  </nav>
 
-    <form action="https://httpbin.org/get" method="get">
-        <label>
-            Product Name:  
-            <input type="text" name="product" />
-        </label>
-        <br /><br />
+  <h1>Add New Product</h1>
+  <p style="color: green;">Please fill in the details below to add a new product.</p> <!-- Inline CSS example -->
 
-        <label>
-            Category:  
-            <input type="text" name="category" />
-        </label>
-        <br /><br />
+  <form action="https://example.com/addproduct" method="post">
+    <p>
+      <label for="pname">Product Name:</label>
+      <input type="text" id="pname" name="productname" />
+    </p>
 
-        <label>
-            Quantity:  
-            <input type="number" name="quantity" />
-        </label>
-        <br /><br />
+    <p>
+      <label for="category">Category:</label>
+      <select id="category" name="productcategory">
+        <option>Electronics</option>
+        <option>Furniture</option>
+        <option>Clothing</option>
+        <option>Food</option>
+      </select>
+    </p>
 
-        <input type="submit" value="Add Product" />
-    </form>
+    <p>
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="productprice" step="0.01" />
+    </p>
+
+    <p>
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="productquantity" />
+    </p>
+
+    <p>
+      <label>Available:</label>
+      <input type="radio" name="available" value="Yes" /> Yes
+      <input type="radio" name="available" value="No" /> No
+    </p>
+
+    <p>
+      <label for="features">Features:</label>
+      <input type="checkbox" name="features" value="Warranty" /> Warranty
+      <input type="checkbox" name="features" value="Discount" /> Discount
+      <input type="checkbox" name="features" value="Free Shipping" /> Free Shipping
+    </p>
+
+    <p>
+      <label for="description">Description:</label>
+      <textarea id="description" name="productdescription" rows="4" cols="40"></textarea>
+    </p>
+
+    <p>
+      <input type="submit" value="Add Product" />
+      <input type="reset" value="Clear Form" />
+    </p>
+  </form>
+
+  <footer>
+    © 2026 Humaimis Team
+  </footer>
 </body>
-
 </html>
+
