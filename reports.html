@@ -1,50 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Reports - Smart Inventory Management System</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Inventory Reports</title>
+    <link rel="stylesheet" href="styles.css" />
 
-  <header>
-    <img src="logo.png" alt="Smart Inventory Logo" width="80">
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="inventory.html">Inventory</a>
-      <a href="products.html">Products</a>
-      <a href="addproduct.html">Add Product</a>
-      <a href="categories.html">Categories</a>
-      <a href="reports.html">Reports</a>
-    </nav>
-  </header>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About Us</a> |
+            <a href="contact.html">Contact Us</a> |
+            <a href="inventory.html">Inventory</a> |
+            <a href="products.html">Products</a> |
+            <a href="addproduct.html">Add Product</a> |
+            <a href="addcategory.html">Add Category</a> |
+            <a href="stock.html">Stock</a> |
+            <a href="reports.html">Reports</a>
+        </nav>
+</head>
 
-  <h1>Inventory Reports</h1>
-  <p>Summary of stock levels and low-stock alerts.</p>
+<body>
+    <h2>Inventory Reports</h2>
 
-  <table>
-    <tr>
-      <th>Product</th>
-      <th>Category</th>
-      <th>Status</th>
-    </tr>
-    <tr>
-      <td>Markers</td>
-      <td>Stationery</td>
-      <td style="color:red;">Low Stock</td>
-    </tr>
-    <tr>
-      <td>USB Drives</td>
-      <td>Electronics</td>
-      <td style="color:red;">Critical</td>
-    </tr>
-  </table>
+    <table border="1" cellspacing="5" cellpadding="5">
+        <tr>
+            <th>Category</th>
+            <th>Total Products</th>
+            <th>Total Quantity</th>
+        </tr>
 
-  <footer>
-    <p>&copy; 2026 Smart Inventory Management System | Contact: info@inventory.com</p>
-  </footer>
+        <tr>
+            <td>Dairy</td>
+            <td>2</td>
+            <td>40</td>
+        </tr>
 
+        <tr>
+            <td>Bakery</td>
+            <td>3</td>
+            <td>60</td>
+        </tr>
+    </table>
+
+    <p>
+        This table summarizes inventory levels by category.  
+        Future versions will include charts and graphs.
+    </p>
 </body>
+
 </html>
