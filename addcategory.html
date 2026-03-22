@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
-    <title>Add Category</title>
-    <link rel="stylesheet" href="styles.css" />
-
-    <nav>
-            <a href="index.html">Home</a> |
-            <a href="about.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="inventory.html">Inventory</a> |
-            <a href="products.html">Products</a> |
-            <a href="addproduct.html">Add Product</a> |
-            <a href="addcategory.html">Add Category</a> |
-            <a href="stock.html">Stock</a> |
-            <a href="reports.html">Reports</a>
-        </nav>
+  <title>Add Category</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <h2>Add Category</h2>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="about.html">About Us</a> |
+        <a href="contact.html">Contact Us</a> |
+        <a href="inventory.html">Inventory</a> |
+        <a href="products.html">Products</a> |
+        <a href="addproduct.html">Add Product</a> |
+        <a href="addcategory.html">Add Category</a> |
+        <a href="stock.html">Stock</a> |
+        <a href="reports.html">Reports</a>
+   </nav>
 
-    <form action="https://httpbin.org/get" method="get">
-        <label>
-            Category Name:  
-            <input type="text" name="category" />
-        </label>
-        <br /><br />
+  <h1>Add New Category</h1>
+  <form action="https://example.com/addcategory" method="post">
+    <p><label for="cname">Category Name:</label>
+    <input type="text" id="cname" name="categoryname" /></p>
 
-        <label>
-            Description:  
-            <textarea name="description" rows="4" cols="50"></textarea>
-        </label>
-        <br /><br />
+    <p><label for="description">Description:</label><br />
+    <textarea id="description" name="categorydescription" rows="4" cols="40"></textarea></p>
 
-        <input type="submit" value="Add Category" />
-    </form>
+    <p><input type="submit" value="Add Category" />
+    <input type="reset" value="Clear Form" /></p>
+  </form>
+
+  <footer>© 2026 Humaimis Team</footer>
 </body>
-
 </html>
