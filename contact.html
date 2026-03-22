@@ -1,54 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Contact Us - Smart Inventory Management System</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css" />
 
-  <!-- Logo + Navigation -->
-  <header>
-    <img src="logo.png" alt="Smart Inventory Logo" width="80">
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="inventory.html">Inventory</a>
-      <a href="products.html">Products</a>
-      <a href="addproduct.html">Add Product</a>
-      <a href="categories.html">Categories</a>
-      <a href="reports.html">Reports</a>
-    </nav>
-  </header>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About Us</a> |
+            <a href="contact.html">Contact Us</a> |
+            <a href="inventory.html">Inventory</a> |
+            <a href="products.html">Products</a> |
+            <a href="addproduct.html">Add Product</a> |
+            <a href="addcategory.html">Add Category</a> |
+            <a href="stock.html">Stock</a> |
+            <a href="reports.html">Reports</a>
+        </nav>
+</head>
 
-  <h1>Contact Us</h1>
-  <p>If you have any questions or feedback, please fill out the form below.</p>
+<body>
+    <h2>Contact Us</h2>
 
-  <!-- Contact Form -->
-  <form action="https://httpbin.org/get" method="get">
-    <label for="name">Full Name:</label>
-    <input type="text" id="name" name="username" required><br><br>
+    <form method="post" action="mailto:team@inventory.com">
+        <label>
+            Name:  
+            <input type="text" name="name" />
+        </label>
+        <br /><br />
 
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="useremail" required><br><br>
+        <label>
+            Email:  
+            <input type="email" name="email" />
+        </label>
+        <br /><br />
 
-    <label for="subject">Subject:</label>
-    <input type="text" id="subject" name="subject"><br><br>
+        <label>
+            Message:  
+            <br />
+            <textarea name="message" rows="4" cols="50"></textarea>
+        </label>
+        <br /><br />
 
-    <label for="message">Message:</label><br>
-    <textarea id="message" name="usermessage" rows="5" cols="40"></textarea><br><br>
-
-    <input type="checkbox" id="subscribe" name="subscribe" value="yes">
-    <label for="subscribe">Subscribe to our newsletter</label><br><br>
-
-    <input type="submit" value="Send">
-  </form>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Smart Inventory Management System | Contact: info@inventory.com</p>
-  </footer>
-
+        <input type="submit" value="Send" />
+    </form>
 </body>
+
 </html>
