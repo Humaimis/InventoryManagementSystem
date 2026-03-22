@@ -1,47 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Add Product - Smart Inventory Management System</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Add Product</title>
+    <link rel="stylesheet" href="styles.css" />
 
-  <header>
-    <img src="logo.png" alt="Smart Inventory Logo" width="80">
     <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="contact.html">Contact Us</a>
-      <a href="inventory.html">Inventory</a>
-      <a href="products.html">Products</a>
-      <a href="addproduct.html">Add Product</a>
-      <a href="categories.html">Categories</a>
-      <a href="reports.html">Reports</a>
-    </nav>
-  </header>
+            <a href="index.html">Home</a> |
+            <a href="about.html">About Us</a> |
+            <a href="contact.html">Contact Us</a> |
+            <a href="inventory.html">Inventory</a> |
+            <a href="products.html">Products</a> |
+            <a href="addproduct.html">Add Product</a> |
+            <a href="addcategory.html">Add Category</a> |
+            <a href="stock.html">Stock</a> |
+            <a href="reports.html">Reports</a>
+        </nav>
+</head>
 
-  <h1>Add New Product</h1>
-  <form action="https://httpbin.org/get" method="get">
-    <label for="pname">Product Name:</label>
-    <input type="text" id="pname" name="productname" required><br><br>
+<body>
+    <h2>Add Product</h2>
 
-    <label for="pcat">Category:</label>
-    <select id="pcat" name="category">
-      <option value="electronics">Electronics</option>
-      <option value="stationery">Stationery</option>
-      <option value="others">Others</option>
-    </select><br><br>
+    <form action="https://httpbin.org/get" method="get">
+        <label>
+            Product Name:  
+            <input type="text" name="product" />
+        </label>
+        <br /><br />
 
-    <label for="pqty">Quantity:</label>
-    <input type="number" id="pqty" name="quantity" min="1"><br><br>
+        <label>
+            Category:  
+            <input type="text" name="category" />
+        </label>
+        <br /><br />
 
-    <input type="submit" value="Add Product">
-  </form>
+        <label>
+            Quantity:  
+            <input type="number" name="quantity" />
+        </label>
+        <br /><br />
 
-  <footer>
-    <p>&copy; 2026 Smart Inventory Management System | Contact: info@inventory.com</p>
-  </footer>
-
+        <input type="submit" value="Add Product" />
+    </form>
 </body>
+
 </html>
