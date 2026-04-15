@@ -1,61 +1,139 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Categories</title>
 
-<head>
-    <title>Stock Management</title>
-    <link rel="stylesheet" href="styles.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 
-    <nav>
-            <a href="index.html">Home</a> |
-            <a href="about.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="inventory.html">Inventory</a> |
-            <a href="products.html">Products</a> |
-            <a href="addproduct.html">Add Product</a> |
-            <a href="addcategory.html">Add Category</a> |
-            <a href="stock.html">Stock</a> |
-            <a href="reports.html">Reports</a>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Inventory Management System</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="nav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="stock.html">Categories</a></li>
+                        <li class="nav-item"><a class="nav-link" href="addproduct.html">Add Product</a></li>
+                        <li class="nav-item"><a class="nav-link" href="addcategory.html">Add Category</a></li>
+                        <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
+                        <li class="nav-item"><a class="nav-link" href="funpage.html">Fun Page</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="reports.html">Reports</a></li>
+                    </ul>
+                </div>
+            </div>
         </nav>
-</head>
 
-<body>
-    <h2>Stock Management</h2>
+        <div class="container mt-5">
 
-    <form action="https://httpbin.org/get" method="get">
-        <h3>Stock In</h3>
-        <label>
-            Product:  
-            <input type="text" name="stockin_product" />
-        </label>
-        <br /><br />
+            <h2>Categories</h2>
 
-        <label>
-            Quantity:  
-            <input type="number" name="stockin_quantity" />
-        </label>
-        <br /><br />
+            <div class="mb-3">
+                <input id="catName" class="form-control mb-2" placeholder="Category Name">
+                <input id="desc" class="form-control mb-2" placeholder="Description">
 
-        <input type="submit" value="Add Stock" />
-    </form>
+                <button class="btn btn-success" onclick="addCategory()">Add Category</button>
+            </div>
 
-    <hr />
+            <input id="searchCat" class="form-control mb-3" placeholder="Search..." onkeyup="searchCategory()">
 
-    <form action="https://httpbin.org/get" method="get">
-        <h3>Stock Out</h3>
-        <label>
-            Product:  
-            <input type="text" name="stockout_product" />
-        </label>
-        <br /><br />
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody id="categoryTable"></tbody>
+            </table>
 
-        <label>
-            Quantity:  
-            <input type="number" name="stockout_quantity" />
-        </label>
-        <br /><br />
+        </div>
 
-        <input type="submit" value="Remove Stock" />
-    </form>
-</body>
+        <div class="bg-dark text-white mt-5 p-2">
+            <marquee id="bannerText"></marquee>
+        </div>
 
+        <footer class="bg-light text-center p-3 mt-4">
+            <p>© 2026 Inventory Management System</p>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+
+            // Constructor
+            function Category(name, description) {
+                this.name = name;
+                this.description = description;
+            }
+
+            // Array
+            let categories = [
+                new Category("Electronics", "Devices and gadgets"),
+                new Category("Furniture", "Home and office items")
+            ];
+
+            // Display
+            function displayCategories(list) {
+                let table = document.getElementById("categoryTable");
+                table.innerHTML = "";
+
+                list.forEach(c => {
+                    table.innerHTML += `
+                        <tr>
+                            <td>${c.name}</td>
+                            <td>${c.description}</td>
+                        </tr>`;
+                });
+            }
+
+            // Add
+            function addCategory() {
+                let name = document.getElementById("catName").value;
+                let desc = document.getElementById("desc").value;
+
+                if (!name || !desc) {
+                    alert("Enter valid data");
+                    return;
+                }
+
+                categories.push(new Category(name, desc));
+                displayCategories(categories);
+            }
+
+            // Search
+            function searchCategory() {
+                let keyword = document.getElementById("searchCat").value.toLowerCase();
+
+                let filtered = categories.filter(c =>
+                    c.name.toLowerCase().includes(keyword)
+                );
+
+                displayCategories(filtered);
+            }
+
+            // Banner
+            setInterval(() => {
+                let now = new Date();
+                document.getElementById("bannerText").innerText =
+                    "Welcome! " + now.toLocaleDateString() + " " + now.toLocaleTimeString();
+            }, 1000);
+
+            // Initial load
+            displayCategories(categories);
+
+        </script>
+
+    </body>
 </html>
