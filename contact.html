@@ -102,21 +102,21 @@
 
             alert("Message sent successfully!");
             return true;
-
-            // Function to update banner with date and time 
-            function updateBanner() { 
-                let now = new Date(); 
- 
-                let date = now.toLocaleDateString(); 
-                let time = now.toLocaleTimeString(); 
- 
-                document.getElementById("bannerText").innerText = 
-                    "Welcome to Inventory System! Today is " + date + " and time is " + time; 
-            } 
- 
-            // Update every second 
-            setInterval(updateBanner, 1000); 
         }
+        
+        // Function to update banner with date and time 
+        function updateBanner() { 
+            let now = new Date(); 
+ 
+             let date = now.toLocaleDateString(); 
+             let time = now.toLocaleTimeString(); 
+ 
+             document.getElementById("bannerText").innerText = 
+                 "Welcome to Inventory System! Today is " + date + " and time is " + time; 
+        } 
+ 
+        // Update every second 
+        setInterval(updateBanner, 1000); 
     </script>
 </body>
 </html>
