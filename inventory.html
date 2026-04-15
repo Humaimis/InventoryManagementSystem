@@ -45,6 +45,25 @@
             <td>30</td>
         </tr>
     </table>
+
+
+
+
+
+    // Function to update banner with date and time
+    function updateBanner() {
+    let now = new Date();
+
+    let date = now.toLocaleDateString();
+    let time = now.toLocaleTimeString();
+
+    document.getElementById("bannerText").innerText =
+        "Welcome to Inventory System! Today is " + date + " and time is " + time;
+   }
+
+    // Update every second
+    setInterval(updateBanner, 1000);
+    
 </body>
 
 </html>
