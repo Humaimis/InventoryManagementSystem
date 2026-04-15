@@ -1,50 +1,122 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html lang="en">
 <head>
-    <title>Inventory Reports</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
 
-    <nav>
-            <a href="index.html">Home</a> |
-            <a href="about.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="inventory.html">Inventory</a> |
-            <a href="products.html">Products</a> |
-            <a href="addproduct.html">Add Product</a> |
-            <a href="addcategory.html">Add Category</a> |
-            <a href="stock.html">Stock</a> |
-            <a href="reports.html">Reports</a>
-        </nav>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <h2>Inventory Reports</h2>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Inventory Management System</a>
 
-    <table border="1" cellspacing="5" cellpadding="5">
-        <tr>
-            <th>Category</th>
-            <th>Total Products</th>
-            <th>Total Quantity</th>
-        </tr>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <tr>
-            <td>Dairy</td>
-            <td>2</td>
-            <td>40</td>
-        </tr>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="stock.html">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="addproduct.html">Add Product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="addcategory.html">Add Category</a></li>
+                    <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
+                    <li class="nav-item"><a class="nav-link" href="funpage.html">Fun Page</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="reports.html">Reports</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2>Inventory Reports</h2>
 
-        <tr>
-            <td>Bakery</td>
-            <td>3</td>
-            <td>60</td>
-        </tr>
-    </table>
+        <button class="btn btn-primary mb-3" onclick="generateReport()">Generate Report</button>
 
-    <p>
-        This table summarizes inventory levels by category.  
-        Future versions will include charts and graphs.
-    </p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Value</th>
+                </tr>
+            </thead>
+            <tbody id="reportTable"></tbody>
+        </table>
+
+        <h4 id="grandTotal"></h4>
+    </div>
+    <div class="bg-dark text-white mt-5 p-2"> 
+        <marquee id="bannerText"></marquee> 
+    </div> 
+ 
+    <footer class="bg-light text-center p-3 mt-4"> 
+        <p>© 2026 Inventory Management System</p> 
+    </footer> 
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+    <script>
+        // Product constructor
+        function Product(name, price, quantity) {
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
+
+        // Sample data
+        let products = [
+            new Product("Laptop", 500, 10),
+            new Product("Phone", 300, 20),
+            new Product("Tablet", 200, 15)
+        ];
+
+        //Function to generate areport about products
+        function generateReport() {
+
+            let table = document.getElementById("reportTable");
+            table.innerHTML = "";
+
+            let total = 0;
+
+            products.forEach(p => {
+
+                let value = p.price * p.quantity;     //counting logic
+                total += value;
+
+                table.innerHTML += `
+                <tr>
+                    <td>${p.name}</td>
+                    <td>${p.price}</td>
+                    <td>${p.quantity}</td>
+                    <td>${value}</td>
+                </tr>`;
+            });
+
+            //Print the total
+            document.getElementById("grandTotal").innerText =
+                "Total Inventory Value: " + total;
+        }
+
+        //Function to update banner with date and time 
+        function updateBanner() { 
+            let now = new Date(); 
+ 
+            let date = now.toLocaleDateString(); 
+            let time = now.toLocaleTimeString(); 
+ 
+            document.getElementById("bannerText").innerText = 
+                "Welcome to Inventory System! Today is " + date + " and time is " + time; 
+        } 
+ 
+        // Update every second 
+        setInterval(updateBanner, 1000); 
+    </script>
 </body>
-
 </html>
