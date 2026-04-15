@@ -1,37 +1,120 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html lang="en">
 <head>
-    <title>Smart Inventory Management System</title>
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
 
-    <nav>
-            <a href="index.html">Home</a> |
-            <a href="about.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="inventory.html">Inventory</a> |
-            <a href="products.html">Products</a> |
-            <a href="addproduct.html">Add Product</a> |
-            <a href="addcategory.html">Add Category</a> |
-            <a href="stock.html">Stock</a> |
-            <a href="reports.html">Reports</a>
-        </nav>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <img src="Picture1.png" alt="System Logo" />
-    <h1>Smart Inventory Management System</h1>
-    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Inventory System</a>
 
-    <p>
-        Welcome to the Smart Inventory Management System.  
-        This system helps businesses track, manage, and organize inventory efficiently.
-    </p>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <footer>
-        <p>&copy; 2026 Humaimis Team</p>
-    </footer>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="categories.html">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" href="questionnaire.html">Questionnaire</a></li>
+                <li class="nav-item"><a class="nav-link" href="calculate.html">Calculator</a></li>
+                <li class="nav-item"><a class="nav-link" href="funpage.html">Fun Page</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center mt-5">
+    <h1 class="display-4">Inventory Management System</h1>
+    <p class="lead">Manage your products, categories, and stock efficiently.</p>
+</div>
+
+<div id="carouselExample" class="carousel slide container mt-4" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+
+        <div class="carousel-item active">
+            <img src="images/img1.jpg" class="d-block w-100" style="height:400px;">
+        </div>
+
+        <div class="carousel-item">
+            <img src="images/img2.jpg" class="d-block w-100" style="height:400px;">
+        </div>
+
+        <div class="carousel-item">
+            <img src="images/img3.jpg" class="d-block w-100" style="height:400px;">
+        </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+
+</div>
+
+<div class="container mt-5">
+    <div class="row text-center">
+
+        <div class="col-md-4">
+            <h3>Products</h3>
+            <p>View and manage all products.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Categories</h3>
+            <p>Organize products into categories.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Reports</h3>
+            <p>Analyze inventory performance.</p>
+        </div>
+
+    </div>
+</div>
+
+<!--Scrolling Banner-->
+<div class="bg-dark text-white mt-5 p-2">
+    <marquee id="bannerText"></marquee>
+</div>
+
+<footer class="bg-light text-center p-3 mt-4">
+    <p>© 2026 Inventory Management System</p>
+</footer>
+
+<!--Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+// Function to update banner with date and time
+function updateBanner() {
+    let now = new Date();
+
+    let date = now.toLocaleDateString();
+    let time = now.toLocaleTimeString();
+
+    document.getElementById("bannerText").innerText =
+        "Welcome to Inventory System! Today is " + date + " and time is " + time;
+}
+
+// Update every second
+setInterval(updateBanner, 1000);
+
+</script>
+
 </body>
-
 </html>
