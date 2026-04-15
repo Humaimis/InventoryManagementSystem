@@ -36,27 +36,51 @@
         </div>
     </nav>
     
-    <h2>Products</h2>
+    <div class="container mt-5">
+        <h2>Products</h2>
 
-    <table border="1" cellspacing="5" cellpadding="5">
-        <tr>
-            <th>Product Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
-        </tr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+            </thead>
 
-        <tr>
-            <td>Rice</td>
-            <td>Grains</td>
-            <td>50</td>
-        </tr>
+            <tbody id="productTable"></tbody>
+        </table>
 
-        <tr>
-            <td>Oil</td>
-            <td>Cooking</td>
-            <td>25</td>
-        </tr>
-    </table>
+        <button class="btn btn-primary" onclick="loadProducts()">Load Products</button>
+    </div>
+
+    <script>
+        //Function for new products
+        function Product(name, price, quantity) {
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
+
+        let products = [
+        new Product("Laptop", 500, 10),
+        new Product("Phone", 300, 20)
+        ];
+
+        //Fonction to show products when clicking the button
+        function loadProducts() {
+            let table = document.getElementById("productTable");
+            table.innerHTML = "";
+    
+            products.forEach(p => {
+                table.innerHTML += `<tr>
+                <td>${p.name}</td>
+                <td>${p.price}</td>
+                <td>${p.quantity}</td>
+                </tr>`;
+            });
+        }
+    </script>
 
     <div class="bg-dark text-white mt-5 p-2">
         <marquee id="bannerText"></marquee>
