@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Questionnaire</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionnaire</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -13,11 +12,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.html">Inventory Management System</a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -31,46 +28,53 @@
                 <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link" href="reports.html">Reports</a></li>
+                <li class="nav-item"><a class="nav-link" href="php/search.php">Search</a></li>
+                <li class="nav-item"><a class="nav-link" href="php/manage_products.php">Manage DB</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Customer Feedback</h2>
+    <h2>Customer Feedback</h2>
 
-    <form class="p-4 bg-light rounded shadow">
+    <!-- Form sends data to process_questionnaire.php (Part 3 requirement) -->
+    <form action="php/process_questionnaire.php" method="post" onsubmit="return validateQuestionnaireForm()">
 
         <div class="mb-3">
             <label class="form-label">Name</label>
-            <input type="text" id="name" class="form-control">
+            <input type="text" id="name" name="name" class="form-control">
+            <span id="nameError" style="color:red;"></span>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Email</label>
-            <input type="text" id="email" class="form-control">
+            <input type="text" id="email" name="email" class="form-control">
+            <span id="emailError" style="color:red;"></span>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Rate our system</label><br>
-            <input type="radio" name="rate"> Good
-            <input type="radio" name="rate"> Average
-            <input type="radio" name="rate"> Bad
+            <input type="radio" name="rate" value="Good"> Good
+            <input type="radio" name="rate" value="Average"> Average
+            <input type="radio" name="rate" value="Bad"> Bad
+            <br><span id="rateError" style="color:red;"></span>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Features you like</label><br>
-            <input type="checkbox"> Easy UI
-            <input type="checkbox"> Fast
-            <input type="checkbox"> Accurate
+            <input type="checkbox" name="features[]" value="Easy UI"> Easy UI
+            <input type="checkbox" name="features[]" value="Fast"> Fast
+            <input type="checkbox" name="features[]" value="Accurate"> Accurate
         </div>
 
         <div class="mb-3">
             <label class="form-label">Comments</label>
-            <textarea id="comments" class="form-control"></textarea>
+            <textarea id="comments" name="comments" class="form-control"></textarea>
+            <span id="commentsError" style="color:red;"></span>
         </div>
 
-        <button type="button" class="btn btn-primary" onclick="validateForm()">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
 </div>
@@ -84,42 +88,67 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
+
+// JavaScript validation function for Questionnaire Form (Part 1)
+function validateQuestionnaireForm() {
+
+    // Clear previous error messages
+    document.getElementById("nameError").innerText     = "";
+    document.getElementById("emailError").innerText    = "";
+    document.getElementById("rateError").innerText     = "";
+    document.getElementById("commentsError").innerText = "";
+
+    var isValid = true;
+
+    // (a) Required field + (c) Length check: Name at least 3 characters
+    var name = document.getElementById("name").value.trim();
+    if (name.length < 3) {
+        document.getElementById("nameError").innerText = "Name must be at least 3 characters.";
+        isValid = false;
+    }
+
+    // (b) Regular expression validation: valid email format
+    var email = document.getElementById("email").value.trim();
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
+    if (!emailPattern.test(email)) {
+        document.getElementById("emailError").innerText = "Please enter a valid email (e.g. user@example.com).";
+        isValid = false;
+    }
+
+    // (d) Logical validation: at least one radio button must be selected
+    var radios = document.querySelectorAll("input[name='rate']");
+    var rateSelected = false;
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            rateSelected = true;
+            break;
+        }
+    }
+    if (!rateSelected) {
+        document.getElementById("rateError").innerText = "Please select a rating.";
+        isValid = false;
+    }
+
+    // (c) Length constraint: Comments must be at least 10 characters
+    var comments = document.getElementById("comments").value.trim();
+    if (comments.length < 10) {
+        document.getElementById("commentsError").innerText = "Comments must be at least 10 characters.";
+        isValid = false;
+    }
+
+    return isValid;
+}
+
 // Banner
 function updateBanner() {
-    let now = new Date();
+    var now = new Date();
     document.getElementById("bannerText").innerText =
         "Welcome! Today is " + now.toLocaleDateString() +
         " and time is " + now.toLocaleTimeString();
 }
 setInterval(updateBanner, 1000);
 
-// Validation
-function validateForm() {
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let comments = document.getElementById("comments").value;
-
-    if (name.length < 3) {
-        alert("Name must be at least 3 characters");
-        return;
-    }
-
-    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (!email.match(emailPattern)) {
-        alert("Invalid email");
-        return;
-    }
-
-    if (comments.length < 10) {
-        alert("Comments must be at least 10 characters");
-        return;
-    }
-
-    alert("Submitted successfully!");
-}
 </script>
-
 </body>
 </html>
